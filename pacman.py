@@ -15,9 +15,9 @@ font = pygame.font.Font('freesansbold.ttf', 20)
 level = copy.deepcopy(boards)
 color = 'blue'
 PI = math.pi
-player_images = []
-for i in range(1, 5):
-    player_images.append(pygame.transform.scale(pygame.image.load(f'assets/player_images/{i}.png'), (45, 45)))
+player_images_1 = []
+for i in range(1, 2):
+    player_images_1.append(pygame.transform.scale(pygame.image.load(f'assets/player_images_1/{i}.png'), (45, 45)))
 blinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/red.png'), (45, 45))
 pinky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/pink.png'), (45, 45))
 inky_img = pygame.transform.scale(pygame.image.load(f'assets/ghost_images/blue.png'), (45, 45))
@@ -665,7 +665,7 @@ def draw_misc():
     if powerup:
         pygame.draw.circle(screen, 'blue', (140, 930), 15)
     for i in range(lives):
-        screen.blit(pygame.transform.scale(player_images[0], (30, 30)), (650 + i * 40, 915))
+        screen.blit(pygame.transform.scale(player_images_1[0], (30, 30)), (650 + i * 40, 915))
     if game_over:
         pygame.draw.rect(screen, 'white', [50, 200, 800, 300],0, 10)
         pygame.draw.rect(screen, 'dark gray', [70, 220, 760, 260], 0, 10)
@@ -730,13 +730,13 @@ def draw_board():
 def draw_player():
     # 0-RIGHT, 1-LEFT, 2-UP, 3-DOWN
     if direction == 0:
-        screen.blit(player_images[counter // 5], (player_x, player_y))
+        screen.blit(player_images_1[0], (player_x, player_y))
     elif direction == 1:
-        screen.blit(pygame.transform.flip(player_images[counter // 5], True, False), (player_x, player_y))
+        screen.blit(pygame.transform.flip(player_images_1[0], True, False), (player_x, player_y))
     elif direction == 2:
-        screen.blit(pygame.transform.rotate(player_images[counter // 5], 90), (player_x, player_y))
+        screen.blit(pygame.transform.rotate(player_images_1[0], 90), (player_x, player_y))
     elif direction == 3:
-        screen.blit(pygame.transform.rotate(player_images[counter // 5], 270), (player_x, player_y))
+        screen.blit(pygame.transform.rotate(player_images_1[0], 270), (player_x, player_y))
 
 
 def check_position(centerx, centery):
